@@ -1,0 +1,1 @@
+In @templates/base.html, add two links in the footer section — Privacy Policy and Terms & Conditions. Use plain anchor tags with href="#" for now. Do not add any new colors, styles, or classes — match the existing footer styling only. Do not modify anything else in the file.
