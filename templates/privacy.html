@@ -1,0 +1,176 @@
+{% extends "base.html" %}
+
+{% block title %}Privacy Policy - Spendly{% endblock %}
+
+{% block content %}
+<style>
+    .legal-page {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 4rem 2rem;
+    }
+
+    .legal-header {
+        text-align: center;
+        margin-bottom: 3rem;
+        padding-bottom: 2rem;
+        border-bottom: 1px solid var(--border);
+    }
+
+    .legal-title {
+        font-family: var(--font-display);
+        font-size: clamp(2rem, 4vw, 2.75rem);
+        color: var(--ink);
+        margin-bottom: 0.75rem;
+        letter-spacing: -0.02em;
+    }
+
+    .legal-meta {
+        font-size: 0.9rem;
+        color: var(--ink-muted);
+    }
+
+    .legal-section {
+        margin-bottom: 2.5rem;
+    }
+
+    .legal-section h2 {
+        font-family: var(--font-display);
+        font-size: 1.4rem;
+        color: var(--ink);
+        margin-bottom: 1rem;
+        letter-spacing: -0.01em;
+    }
+
+    .legal-section p {
+        font-size: 1rem;
+        color: var(--ink-soft);
+        line-height: 1.8;
+        margin-bottom: 1rem;
+    }
+
+    .legal-section ul {
+        list-style: none;
+        padding-left: 0.5rem;
+        margin: 1rem 0;
+    }
+
+    .legal-section li {
+        position: relative;
+        padding-left: 1.5rem;
+        margin-bottom: 0.75rem;
+        font-size: 1rem;
+        color: var(--ink-soft);
+        line-height: 1.7;
+    }
+
+    .legal-section li::before {
+        content: "◦";
+        position: absolute;
+        left: 0;
+        color: var(--accent);
+        font-size: 1.2rem;
+        line-height: 1.4;
+    }
+
+    .legal-note {
+        background: var(--accent-light);
+        border-left: 3px solid var(--accent);
+        padding: 1.25rem 1.5rem;
+        border-radius: var(--radius-sm);
+        font-size: 0.95rem;
+        color: var(--ink-soft);
+        line-height: 1.7;
+        margin: 2rem 0;
+    }
+
+    .legal-section:last-child {
+        margin-bottom: 0;
+    }
+</style>
+
+<div class="legal-page">
+    <div class="legal-header">
+        <h1 class="legal-title">Privacy Policy</h1>
+        <p class="legal-meta">Last updated: April 12, 2026</p>
+    </div>
+
+    <div class="legal-section">
+        <h2>1. Introduction</h2>
+        <p>At Spendly, we take your privacy seriously. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website and use our expense tracking application. Please read this privacy policy carefully. If you do not agree with the terms of this privacy policy, please do not access the site or use our services.</p>
+    </div>
+
+    <div class="legal-section">
+        <h2>2. Information We Collect</h2>
+        <p>We may collect information about you in a variety of ways. The information we may collect via the website includes:</p>
+        <ul>
+            <li><strong>Personal Data:</strong> Personally identifiable information, such as your name, email address, and password that you voluntarily give to us when you choose to participate in various activities related to the website.</li>
+            <li><strong>Financial Data:</strong> Expense entries, categories, and financial information you input into the application for tracking purposes. This data is stored securely and is only accessible to you.</li>
+            <li><strong>Derivative Data:</strong> Information our servers automatically collect when you access the website, such as your IP address, your browser type, your operating system, your access times, and the pages you have viewed directly before and after accessing the website.</li>
+        </ul>
+    </div>
+
+    <div class="legal-section">
+        <h2>3. Use of Your Information</h2>
+        <p>Having accurate information about you permits us to provide you with a smooth, efficient, and customized experience. We may use information collected about you via the website to:</p>
+        <ul>
+            <li>Create and manage your account</li>
+            <li>Process and store your expense entries and financial data</li>
+            <li>Generate reports and summaries of your spending habits</li>
+            <li>Send you administrative information, such as updates, security alerts, and support messages</li>
+            <li>Respond to your inquiries and provide customer support</li>
+            <li>Monitor and analyze trends, usage, and activities in connection with our website</li>
+        </ul>
+    </div>
+
+    <div class="legal-section">
+        <h2>4. Disclosure of Your Information</h2>
+        <p>We do not sell, trade, or rent your personal information to third parties. We may disclose information about you in the following circumstances:</p>
+        <ul>
+            <li>With your consent or at your direction</li>
+            <li>To comply with legal obligations, such as a court order, subpoena, or government investigation</li>
+            <li>To protect the rights, property, or safety of Spendly, our users, or others</li>
+            <li>In connection with a merger, sale, or transfer of assets involving Spendly</li>
+        </ul>
+    </div>
+
+    <div class="legal-section">
+        <h2>5. Data Security</h2>
+        <p>We use administrative, technical, and physical security measures to help protect your personal information. While we have taken reasonable steps to secure the personal information you provide to us, please be aware that despite our efforts, no security measures are perfect or impenetrable, and no method of data transmission can be guaranteed against any interception or other type of misuse.</p>
+        <div class="legal-note">
+            <strong>Your responsibility:</strong> You are responsible for keeping your password confidential. Do not share your password with anyone.
+        </div>
+    </div>
+
+    <div class="legal-section">
+        <h2>6. Data Retention</h2>
+        <p>We will retain your information for as long as your account is active or as needed to provide you services. If you wish to cancel your account or request that we no longer use your information to provide you services, contact us. We will retain and use your information as necessary to comply with our legal obligations, resolve disputes, and enforce our agreements.</p>
+    </div>
+
+    <div class="legal-section">
+        <h2>7. Your Privacy Rights</h2>
+        <p>Depending on your location, you may have certain rights regarding your personal information, such as:</p>
+        <ul>
+            <li>The right to access the personal information we hold about you</li>
+            <li>The right to request correction of inaccurate personal information</li>
+            <li>The right to request deletion of your personal information</li>
+            <li>The right to opt-out of certain data processing activities</li>
+        </ul>
+    </div>
+
+    <div class="legal-section">
+        <h2>8. Children's Privacy</h2>
+        <p>Spendly is not intended for use by children under the age of 18. We do not knowingly collect personal information from children under 18. If we discover that we have collected personal information from a child under 18, we will delete that information immediately.</p>
+    </div>
+
+    <div class="legal-section">
+        <h2>9. Changes to This Privacy Policy</h2>
+        <p>We may update this privacy policy from time to time in order to reflect, for example, changes to our practices or for other operational, legal, or regulatory reasons. We will notify you of any material changes by posting the new privacy policy on this website and updating the "Last updated" date. You are encouraged to periodically review this privacy policy to stay informed about how we are protecting your information.</p>
+    </div>
+
+    <div class="legal-section">
+        <h2>10. Contact Us</h2>
+        <p>If you have any questions or concerns about this Privacy Policy or our data practices, please contact us.</p>
+    </div>
+</div>
+{% endblock %}
