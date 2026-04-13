@@ -3,91 +3,6 @@
 {% block title %}Terms and Conditions - Spendly{% endblock %}
 
 {% block content %}
-<style>
-    .legal-page {
-        max-width: 800px;
-        margin: 0 auto;
-        padding: 4rem 2rem;
-    }
-
-    .legal-header {
-        text-align: center;
-        margin-bottom: 3rem;
-        padding-bottom: 2rem;
-        border-bottom: 1px solid var(--border);
-    }
-
-    .legal-title {
-        font-family: var(--font-display);
-        font-size: clamp(2rem, 4vw, 2.75rem);
-        color: var(--ink);
-        margin-bottom: 0.75rem;
-        letter-spacing: -0.02em;
-    }
-
-    .legal-meta {
-        font-size: 0.9rem;
-        color: var(--ink-muted);
-    }
-
-    .legal-section {
-        margin-bottom: 2.5rem;
-    }
-
-    .legal-section h2 {
-        font-family: var(--font-display);
-        font-size: 1.4rem;
-        color: var(--ink);
-        margin-bottom: 1rem;
-        letter-spacing: -0.01em;
-    }
-
-    .legal-section p {
-        font-size: 1rem;
-        color: var(--ink-soft);
-        line-height: 1.8;
-        margin-bottom: 1rem;
-    }
-
-    .legal-section ul {
-        list-style: none;
-        padding-left: 0.5rem;
-        margin: 1rem 0;
-    }
-
-    .legal-section li {
-        position: relative;
-        padding-left: 1.5rem;
-        margin-bottom: 0.75rem;
-        font-size: 1rem;
-        color: var(--ink-soft);
-        line-height: 1.7;
-    }
-
-    .legal-section li::before {
-        content: "◦";
-        position: absolute;
-        left: 0;
-        color: var(--accent);
-        font-size: 1.2rem;
-        line-height: 1.4;
-    }
-
-    .legal-note {
-        background: var(--accent-light);
-        border-left: 3px solid var(--accent);
-        padding: 1.25rem 1.5rem;
-        border-radius: var(--radius-sm);
-        font-size: 0.95rem;
-        color: var(--ink-soft);
-        line-height: 1.7;
-        margin: 2rem 0;
-    }
-
-    .legal-section:last-child {
-        margin-bottom: 0;
-    }
-</style>
 
 <div class="legal-page">
     <div class="legal-header">
@@ -120,7 +35,7 @@
         <h2>4. Data and Privacy</h2>
         <p>Your financial data is stored securely and is accessible only to you. We do not sell, share, or transmit your personal financial information to third parties.</p>
         <div class="legal-note">
-            For more details about how we collect, use, and protect your data, please review our <a href="#" style="color: var(--accent); text-decoration: underline;">Privacy Policy</a>.
+            For more details about how we collect, use, and protect your data, please review our <a href="{{ url_for('privacy') }}">Privacy Policy</a>.
         </div>
     </div>
 
@@ -149,4 +64,5 @@
         <p>If you have any questions about these Terms and Conditions, please contact us.</p>
     </div>
 </div>
+
 {% endblock %}
