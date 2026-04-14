@@ -1,1 +1,79 @@
 In @templates/base.html, add two links in the footer section — Privacy Policy and Terms & Conditions. Use plain anchor tags with href="#" for now. Do not add any new colors, styles, or classes — match the existing footer styling only. Do not modify anything else in the file.
+
+Create a new route and template for the Terms and Conditions page in this Flask project.
+
+Add a /terms route in @app.py
+Create templates/terms.html extending base.html
+Write realistic, standard Terms and Conditions content suitable for a personal finance/expense tracker app called Spendly
+Update the Terms & Conditions link in the footer of base.html to point to /terms instead of #
+No fancy colors or extra styling — keep it consistent with the existing design
+
+
+I'm attaching a img in @image.png in the directory of a redesigned hero section for my "Spendly" personal finance tracker app. 
+
+Use this design as the single source of truth for the ENTIRE app's visual language. Redesign every page, component, and UI element to match this aesthetic consistently.
+
+---
+
+DESIGN SYSTEM TO EXTRACT AND APPLY EVERYWHERE:
+
+**Color Palette:**
+- Background (primary): #0c1a12 (deep forest green-black)
+- Background (cards/surfaces): rgba(255,255,255,0.04) with 1px border rgba(255,255,255,0.1)
+- Background (accent card): rgba(60,185,110,0.10) with border rgba(60,185,110,0.22)
+- Primary accent: #3cb96e (green) — hover: #4dd17f
+- Text primary: #f0ede6 (warm off-white)
+- Text muted: rgba(240,237,230,0.55)
+- Text subtle: rgba(240,237,230,0.35)
+- Category colors: Bills #3cb96e | Food #e9a23b | Health #5b9cf6 | Transport #b47cef
+
+**Typography:**
+- Display/headings: 'Playfair Display', serif — italic for emphasis
+- Body/UI: 'DM Sans', sans-serif — weights 300, 400, 500 only
+- Import both from Google Fonts
+
+**Component Patterns:**
+- Cards: border-radius 20px, backdrop-filter blur(12px), dark glass style
+- Buttons (primary): bg #3cb96e, color #0c1a12, border-radius 10px, font-weight 500
+- Buttons (secondary): transparent bg, 1px solid rgba(255,255,255,0.14), color rgba(240,237,230,0.7)
+- Badges/pills: small uppercase, letter-spacing 0.08–0.1em, font-size 11px
+- Dividers: 1px solid rgba(255,255,255,0.08)
+- Input fields: dark bg, 1px border rgba(255,255,255,0.12), focus border #3cb96e, text #f0ede6
+- Progress/bar tracks: bg rgba(255,255,255,0.08), fill with category color, height 4px, border-radius 100px
+- Hover states: translateY(-1px) + brightness boost on primary buttons
+
+**Glow / Atmosphere:**
+- Behind key cards, add: radial-gradient(ellipse, rgba(60,185,110,0.12), transparent 70%)
+- No harsh shadows — use subtle glows and borders instead
+
+**Spacing:**
+- Nav padding: 1.5rem 4rem
+- Section padding: 5rem 4rem
+- Card padding: 1.6rem 1.75rem
+- Gap between grid columns: 4rem
+
+---
+
+PAGES / COMPONENTS TO REDESIGN:
+
+Apply the above design system to ALL of the following — don't leave any page or component in the old style:
+
+1. **Navbar** — logo with green diamond icon, nav links muted + hover white, green CTA button
+2. **Hero section** — already shown in screenshot, implement exactly as shown
+3. **Dashboard / main view** — dark cards, category breakdown bars, total spend display
+4. **Add transaction form / modal** — dark glass card, green submit button, styled inputs
+5. **Transaction history / list** — dark rows with subtle dividers, category color dots
+6. **Category breakdown page** — bar or chart on dark bg using the 4 category colors
+7. **Settings / profile page** — same card style, muted labels, green toggles/accents
+8. **Auth pages (login / signup)** — centered dark card, Playfair heading, green button
+9. **Empty states** — muted text + green accent CTA, no ugly placeholder boxes
+10. **Any charts or graphs** — dark background, category colors, no white chart backgrounds
+
+---
+
+RULES:
+- Zero leftover light/white backgrounds anywhere in the app
+- Every surface must feel like it belongs to this dark, premium design system
+- Consistency over creativity — match the screenshot's palette exactly
+- Keep all existing functionality intact, only change visual styling
+- If using Tailwind, extend the config with these custom colors rather than using arbitrary values everywhere
