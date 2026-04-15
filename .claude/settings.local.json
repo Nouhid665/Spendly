@@ -8,7 +8,8 @@
       "Bash(python -c \"from app import app; print\\('App imports OK'\\)\")",
       "Bash(python app.py)",
       "Bash(sqlite3:*)",
-      "Bash(python -c ':*)"
+      "Bash(python -c ':*)",
+      "Bash(python -c \"from database.db import create_user; print\\('DB import OK'\\)\")"
     ]
   }
 }
