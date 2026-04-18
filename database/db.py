@@ -77,6 +77,32 @@ def create_user(name, email, password):
         return None
 
 
+def get_user_by_email(email):
+    """Fetch user by email address.
+
+    Args:
+        email: User's email address
+
+    Returns:
+        Dict with id, name, password_hash if found, None otherwise
+    """
+    conn = get_db()
+    cursor = conn.cursor()
+
+    cursor.execute("""
+        SELECT id, name, password_hash
+        FROM users
+        WHERE email = ?
+    """, (email,))
+
+    row = cursor.fetchone()
+    conn.close()
+
+    if row:
+        return dict(row)
+    return None
+
+
 def seed_db():
     """Insert sample data for development. Idempotent - won't duplicate on re-runs."""
     conn = get_db()
