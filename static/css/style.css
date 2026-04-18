@@ -594,6 +594,16 @@ em {
     margin-bottom: 1.25rem;
 }
 
+.auth-success {
+    background: rgba(60, 185, 110, 0.15);
+    color: var(--accent);
+    border: 1px solid rgba(60, 185, 110, 0.3);
+    border-radius: var(--radius-sm);
+    padding: 0.875rem 1rem;
+    font-size: 0.875rem;
+    margin-bottom: 1.25rem;
+}
+
 .form-group {
     margin-bottom: 1.25rem;
 }

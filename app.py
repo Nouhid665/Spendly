@@ -1,7 +1,9 @@
-from flask import Flask, render_template, request, redirect, url_for
-from database.db import get_db, init_db, seed_db, create_user
+from flask import Flask, render_template, request, redirect, url_for, session
+from werkzeug.security import check_password_hash
+from database.db import get_db, init_db, seed_db, create_user, get_user_by_email
 
 app = Flask(__name__)
+app.secret_key = "spendly-secret-key-change-in-production"
 
 # Initialize database on startup
 with app.app_context():
@@ -20,6 +22,10 @@ def landing():
 
 @app.route("/register", methods=["GET", "POST"])
 def register():
+    # Redirect logged-in users to landing page
+    if "user_id" in session:
+        return redirect(url_for("landing"))
+
     if request.method == "POST":
         # Extract form data
         name = request.form.get("name", "").strip()
@@ -46,15 +52,50 @@ def register():
         if user_id is None:
             return render_template("register.html", error="Email already registered")
 
-        # Success - redirect to login
-        return redirect(url_for("login"))
+        # Success - redirect to login with success message
+        return redirect(url_for("login") + "?success=1")
 
     return render_template("register.html")
 
 
-@app.route("/login")
+@app.route("/login", methods=["GET", "POST"])
 def login():
-    return render_template("login.html")
+    # Redirect logged-in users to landing page
+    if "user_id" in session:
+        return redirect(url_for("landing"))
+
+    # Check for success message from registration
+    success = None
+    if request.args.get("success"):
+        success = "Account created! Please sign in."
+
+    if request.method == "POST":
+        email = request.form.get("email", "").strip()
+        password = request.form.get("password", "")
+
+        # Validate email format
+        if not email or "@" not in email:
+            return render_template("login.html", error="Invalid email or password")
+
+        if not password:
+            return render_template("login.html", error="Invalid email or password")
+
+        # Get user from database
+        user = get_user_by_email(email)
+
+        if user is None:
+            return render_template("login.html", error="Invalid email or password")
+
+        # Verify password
+        if not check_password_hash(user["password_hash"], password):
+            return render_template("login.html", error="Invalid email or password")
+
+        # Create session
+        session["user_id"] = user["id"]
+
+        return redirect(url_for("landing"))
+
+    return render_template("login.html", success=success)
 
 
 @app.route("/terms")
@@ -73,7 +114,8 @@ def privacy():
 
 @app.route("/logout")
 def logout():
-    return "Logout — coming in Step 3"
+    session.clear()
+    return redirect(url_for("login"))
 
 
 @app.route("/profile")
