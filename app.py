@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request, redirect, url_for, session
 from werkzeug.security import check_password_hash
-from database.db import get_db, init_db, seed_db, create_user, get_user_by_email
+from database.db import get_db, init_db, seed_db, create_user, get_user_by_email, get_user_by_id
 
 app = Flask(__name__)
 app.secret_key = "spendly-secret-key-change-in-production"
@@ -17,6 +17,9 @@ with app.app_context():
 
 @app.route("/")
 def landing():
+    # Redirect logged-in users to profile page
+    if "user_id" in session:
+        return redirect(url_for("profile"))
     return render_template("landing.html")
 
 
@@ -93,7 +96,7 @@ def login():
         # Create session
         session["user_id"] = user["id"]
 
-        return redirect(url_for("landing"))
+        return redirect(url_for("profile"))
 
     return render_template("login.html", success=success)
 
@@ -120,7 +123,51 @@ def logout():
 
 @app.route("/profile")
 def profile():
-    return "Profile page — coming in Step 4"
+    # Guard: redirect unauthenticated users to login
+    user_id = session.get("user_id")
+    if not user_id:
+        return redirect(url_for("login"))
+
+    # Fetch user data from database
+    user = get_user_by_id(user_id)
+
+    # Hardcoded user info (Step 4 only - will be replaced in Step 5)
+    user_info = {
+        "name": user["name"] if user else "Demo User",
+        "email": user["email"] if user else "demo@spendly.com",
+        "member_since": "April 2026"
+    }
+
+    # Hardcoded summary stats
+    summary_stats = {
+        "total_spent": "₹4,893",
+        "transaction_count": 8,
+        "top_category": "Shopping"
+    }
+
+    # Hardcoded transaction history (minimum 3 rows)
+    transactions = [
+        {"date": "2026-04-14", "description": "Coffee and pastries", "category": "Food", "amount": "₹12.75"},
+        {"date": "2026-04-12", "description": "Gift for friend", "category": "Other", "amount": "₹25.00"},
+        {"date": "2026-04-10", "description": "New shoes", "category": "Shopping", "amount": "₹200.00"},
+        {"date": "2026-04-07", "description": "Movie tickets and dinner", "category": "Entertainment", "amount": "₹60.00"},
+        {"date": "2026-04-05", "description": "Pharmacy - vitamins", "category": "Health", "amount": "₹35.00"},
+    ]
+
+    # Hardcoded category breakdown (minimum 3 categories)
+    category_breakdown = [
+        {"category": "Shopping", "amount": "₹200.00", "percentage": 41},
+        {"category": "Bills", "amount": "₹120.00", "percentage": 25},
+        {"category": "Entertainment", "amount": "₹60.00", "percentage": 12},
+        {"category": "Transport", "amount": "₹45.00", "percentage": 9},
+        {"category": "Health", "amount": "₹35.00", "percentage": 7},
+    ]
+
+    return render_template("profile.html",
+                           user=user_info,
+                           stats=summary_stats,
+                           transactions=transactions,
+                           categories=category_breakdown)
 
 
 @app.route("/expenses/add")
